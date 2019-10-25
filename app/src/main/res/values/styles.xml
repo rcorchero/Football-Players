@@ -1,11 +1,63 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
+    <!-- Style TextView Titles-->
+    <style name="TextViewTitleBlack">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="TextViewTitleBlack.32">
+        <item name="android:textSize">@dimen/text_size_32</item>
+    </style>
+
+    <style name="TextViewTitleBold">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Style TextView Description-->
+    <style name="TextViewMedium">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextViewMedium.11">
+        <item name="android:textSize">@dimen/text_size_11</item>
+    </style>
+
+    <style name="TextViewBold">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="TextViewBold.14">
+        <item name="android:textSize">@dimen/text_size_14</item>
+    </style>
+
+    <style name="TextViewBold.18">
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
+
+    <style name="TextViewRegular">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextViewRegular.12">
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+    <!-- Spinner Style -->
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:background">@drawable/background_card_rounded_white</item>
     </style>
 
 </resources>

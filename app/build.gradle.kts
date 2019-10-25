@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -25,11 +23,9 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("okhttp3.logging.HttpLoggingInterceptor.Level", "LEVEL_LOGS", "okhttp3.logging.HttpLoggingInterceptor.Level.NONE")
         }
         getByName("debug") {
             isDebuggable = true
-            buildConfigField("okhttp3.logging.HttpLoggingInterceptor.Level", "LEVEL_LOGS", "okhttp3.logging.HttpLoggingInterceptor.Level.BODY")
         }
     }
 
@@ -47,12 +43,14 @@ android {
             buildConfigField(string, host, "\"https://www.thesportsdb.com/api/v1/json/\"")
         }
     }
-
 }
 
 val kotlinVersion = "1.3.50"
 val appCompatVersion = "1.1.0"
-val jUnitVersion = "4.12"
+
+val constraintLayoutVersion = "1.1.3"
+
+val JUnitVersion = "4.12"
 val extJUnitVersion = "1.1.0"
 val espressoVersion = "3.2.0"
 
@@ -64,8 +62,11 @@ dependencies {
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
     implementation("androidx.core:core-ktx:$appCompatVersion")
 
+    // Design
+    implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
+
     // Test
-    testImplementation("junit:junit:$jUnitVersion")
+    testImplementation("junit:junit:$JUnitVersion")
     androidTestImplementation("androidx.test.ext:junit:$extJUnitVersion")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
 }
