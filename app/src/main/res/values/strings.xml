@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Football Players</string>
+
+    <string name="league_bundesliga">Bundesliga</string>
+    <string name="league_la_liga">La Liga</string>
+    <string name="league_liga_nos">Liga NOS</string>
+    <string name="league_ligue_1">Ligue 1</string>
+    <string name="league_premier_league">Premier League</string>
+    <string name="league_serie_a">Serie A</string>
 </resources>

@@ -49,6 +49,7 @@ val kotlinVersion = "1.3.50"
 val appCompatVersion = "1.1.0"
 
 val constraintLayoutVersion = "1.1.3"
+val materialVersion = "1.0.0"
 
 val JUnitVersion = "4.12"
 val extJUnitVersion = "1.1.0"
@@ -64,6 +65,7 @@ dependencies {
 
     // Design
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
+    implementation("com.google.android.material:material:$materialVersion")
 
     // Test
     testImplementation("junit:junit:$JUnitVersion")

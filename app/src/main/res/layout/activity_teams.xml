@@ -5,6 +5,6 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/toolbar"/>
+        layout="@layout/view_leagues_selector"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

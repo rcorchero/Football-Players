@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:background="@color/primary_dark" >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageLeagueSelected"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:scaleType="fitStart"
+        android:padding="@dimen/padding_8"
+        android:paddingStart="@dimen/padding_16"
+        android:paddingEnd="@dimen/padding_16"
+        android:src="@drawable/ic_league_laliga"
+        app:layout_constraintBottom_toTopOf="@id/leaguesContainer"
+        app:layout_constraintEnd_toStartOf="@id/buttonShowLeagues"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/buttonShowLeagues"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_12"
+        android:src="@drawable/ic_down_arrow"
+        android:tint="@color/primary_light"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@id/leaguesContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/leaguesContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_8"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageLeagueSelected">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipLaLiga"
+            style="@style/ChipTheme"
+            android:text="@string/league_la_liga"
+            app:chipIcon="@drawable/ic_league_laliga_badge"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintEnd_toStartOf="@id/chipBundesliga"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipBundesliga"
+            style="@style/ChipTheme"
+            android:text="@string/league_bundesliga"
+            app:chipIcon="@drawable/ic_bundesliga_badge"
+            app:layout_constraintEnd_toStartOf="@id/chipLigue1"
+            app:layout_constraintStart_toEndOf="@id/chipLaLiga"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipLigue1"
+            style="@style/ChipTheme"
+            android:text="@string/league_ligue_1"
+            app:chipIcon="@drawable/ic_league_ligue1_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/chipBundesliga"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipSerieA"
+            style="@style/ChipTheme"
+            android:layout_marginTop="@dimen/padding_8"
+            android:text="@string/league_serie_a"
+            app:chipIcon="@drawable/ic_league_seriea_badge"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintEnd_toStartOf="@id/chipPremierLeague"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chipBundesliga"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPremierLeague"
+            style="@style/ChipTheme"
+            android:layout_marginTop="@dimen/padding_8"
+            android:text="@string/league_premier_league"
+            app:chipIcon="@drawable/ic_league_premierleague_badge"
+            app:layout_constraintEnd_toStartOf="@id/chipLigaNos"
+            app:layout_constraintStart_toEndOf="@id/chipSerieA"
+            app:layout_constraintTop_toBottomOf="@id/chipBundesliga"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipLigaNos"
+            style="@style/ChipTheme"
+            android:layout_marginTop="@dimen/padding_8"
+            android:text="@string/league_liga_nos"
+            app:chipIcon="@drawable/ic_leagues_liganos_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/chipPremierLeague"
+            app:layout_constraintTop_toBottomOf="@id/chipBundesliga"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
