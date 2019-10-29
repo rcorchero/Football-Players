@@ -1,20 +1,55 @@
-package com.rcorchero.footballplayers
+package com.rcorchero.footballplayers.platform.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
+import com.rcorchero.footballplayers.R
+import com.rcorchero.footballplayers.presentation.views.TeamsView
 import kotlinx.android.synthetic.main.activity_teams.*
 import kotlinx.android.synthetic.main.view_leagues_selector.*
+import javax.inject.Inject
 
-class TeamsActivity : AppCompatActivity() {
+class TeamsActivity : BaseActivity(), TeamsView {
 
     private var showLeagues = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_teams)
+    @Inject
+    lateinit var presenter: TeamsPresenter
 
+    private lateinit var adapter: TeamsAdapter
+
+    override fun getActivityLayout(): Int = R.layout.activity_teams
+
+    override fun onCreate(bundle: Bundle?) {
+        super.onCreate(bundle)
+
+        initUI()
         setListeners()
+
+        presenter.attachView(this)
+    }
+
+    private fun initUI() {
+        setUpListView()
+        setUpRefreshView()
+    }
+
+    private fun setUpListView() {
+        adapter = TeamsAdapter(presenter)
+        recyclerTeams.layoutManager = GridLayoutManager(this, 2)
+        recyclerTeams.adapter = adapter
+    }
+
+    private fun setUpRefreshView() {
+        refreshLayout.setOnRefreshListener { presenter.refresh() }
+    }
+
+    override fun refreshList() {
+        adapter.refreshData()
+    }
+
+    override fun cancelRefreshDialog() {
+        refreshLayout.isRefreshing = false
     }
 
     private fun setListeners() {
@@ -46,9 +81,9 @@ class TeamsActivity : AppCompatActivity() {
             changeLeagueSelectedImage(imageId = R.drawable.ic_league_seriea)
         }
 
-        recyclerTeams.setOnClickListener {
+        /*recyclerTeams.setOnClickListener {
             changeLeaguesContainerStatus(show = false)
-        }
+        }*/
     }
 
     private fun changeLeagueSelectedImage(imageId: Int) {

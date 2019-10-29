@@ -6,17 +6,17 @@ buildscript {
         google()
         jcenter()
     }
+
     dependencies {
         classpath(kotlin("gradle-plugin", kotlinVersion))
         classpath("com.android.tools.build:gradle:$gradleVersion")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
 allprojects {
     repositories {
-        google()
         jcenter()
+        google()
     }
 }
 

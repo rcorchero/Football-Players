@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.config.KotlinCompilerVersion
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -23,9 +25,11 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("okhttp3.logging.HttpLoggingInterceptor.Level", "LEVEL_LOGS", "okhttp3.logging.HttpLoggingInterceptor.Level.NONE")
         }
         getByName("debug") {
             isDebuggable = true
+            buildConfigField("okhttp3.logging.HttpLoggingInterceptor.Level", "LEVEL_LOGS", "okhttp3.logging.HttpLoggingInterceptor.Level.BODY")
         }
     }
 
@@ -45,15 +49,19 @@ android {
     }
 }
 
-val kotlinVersion = "1.3.50"
 val appCompatVersion = "1.1.0"
+val coroutinesVersion = "1.1.1"
 
 val constraintLayoutVersion = "1.1.3"
 val materialVersion = "1.0.0"
 
+val picassoVersion = "2.71828"
+
 val retrofitVersion = "2.3.0"
 val okhttpVersion = "3.5.0"
 val gsonVersion = "2.8.2"
+
+val daggerVersion = "2.17"
 
 val JUnitVersion = "4.12"
 val extJUnitVersion = "1.1.0"
@@ -63,13 +71,17 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
+    implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
     implementation("androidx.core:core-ktx:$appCompatVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     // Design
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
     implementation("com.google.android.material:material:$materialVersion")
+
+    // Picasso
+    implementation("com.squareup.picasso:picasso:$picassoVersion")
 
     // Retrofit OkHttp
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
@@ -79,6 +91,23 @@ dependencies {
 
     // Gson
     implementation("com.google.code.gson:gson:$gsonVersion")
+
+    // Dagger
+    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
+    implementation("com.google.dagger:dagger:$daggerVersion") {
+        exclude(group = "com.android.support")
+        exclude(module = "appcompat-v7")
+        exclude(module = "support-v4")
+    }
+
+    // Dagger Android
+    kapt("com.google.dagger:dagger-android-processor:$daggerVersion")
+    implementation("com.google.dagger:dagger-android:$daggerVersion")
+    implementation("com.google.dagger:dagger-android-support:$daggerVersion") {
+        exclude(group = "com.android.support")
+        exclude(module = "appcompat-v7")
+        exclude(module = "support-v4")
+    }
 
     // Test
     testImplementation("junit:junit:$JUnitVersion")
