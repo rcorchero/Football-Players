@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -54,10 +54,18 @@
         <item name="android:textSize">@dimen/text_size_12</item>
     </style>
 
-    <!-- Spinner Style -->
-    <style name="SpinnerTheme" parent="android:Widget.Spinner">
-        <item name="android:spinnerMode">dropdown</item>
-        <item name="android:background">@drawable/background_card_rounded_white</item>
+    <!-- Chip Style -->
+    <style name="ChipTheme" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/primary</item>
+        <item name="chipCornerRadius">@dimen/chip_corner_radius</item>
+        <item name="iconStartPadding">@dimen/chip_icon_start_padding</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/whitesmoke</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingBottom">@dimen/padding_12</item>
+        <item name="android:paddingTop">@dimen/padding_12</item>
     </style>
 
 </resources>
