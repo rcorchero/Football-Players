@@ -51,6 +51,10 @@ val appCompatVersion = "1.1.0"
 val constraintLayoutVersion = "1.1.3"
 val materialVersion = "1.0.0"
 
+val retrofitVersion = "2.3.0"
+val okhttpVersion = "3.5.0"
+val gsonVersion = "2.8.2"
+
 val JUnitVersion = "4.12"
 val extJUnitVersion = "1.1.0"
 val espressoVersion = "3.2.0"
@@ -66,6 +70,15 @@ dependencies {
     // Design
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
     implementation("com.google.android.material:material:$materialVersion")
+
+    // Retrofit OkHttp
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+
+    // Gson
+    implementation("com.google.code.gson:gson:$gsonVersion")
 
     // Test
     testImplementation("junit:junit:$JUnitVersion")
