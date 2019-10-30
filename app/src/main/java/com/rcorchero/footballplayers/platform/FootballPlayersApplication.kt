@@ -1,5 +1,6 @@
 package com.rcorchero.footballplayers.platform
 
+import com.rcorchero.footballplayers.injector.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 

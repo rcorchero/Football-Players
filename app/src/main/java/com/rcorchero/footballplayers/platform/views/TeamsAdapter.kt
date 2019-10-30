@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rcorchero.footballplayers.R
 import com.rcorchero.footballplayers.platform.extensions.loadImage
@@ -36,18 +37,23 @@ class TeamsAdapter(private val presenter: TeamsPresenter) :
     inner class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         TeamCellView, View.OnClickListener {
 
-        private val imageView = itemView.findViewById(R.id.imageTeam) as AppCompatImageView
+        private val imageTeam = itemView.findViewById(R.id.imageTeam) as AppCompatImageView
+        private val textTeam = itemView.findViewById(R.id.textTeam) as AppCompatTextView
 
         init {
             itemView.setOnClickListener(this)
         }
 
         override fun displayImage(url: String) {
-            imageView.loadImage(url = url, placeholderId = R.drawable.ic_football_club)
+            imageTeam.loadImage(url = url, placeholderId = R.drawable.ic_football_club)
+        }
+
+        override fun displayTeamName(name: String) {
+            textTeam.text = name
         }
 
         override fun onClick(view: View) {
-            presenter.onItemClick(adapterPosition)
+
         }
     }
 }

@@ -10,14 +10,12 @@ import javax.inject.Inject
 class TeamsPresenter
 @Inject constructor(private val getTeamsInteractor: GetTeamsInteractor<List<Team>>): BasePresenter<TeamsView>() {
 
-    var teamsList = emptyList<Team>()
-
-    private var selectedAvengerName: String = ""
+    private var teamsList = emptyList<Team>()
 
     override fun onViewAttached() {
         view.showLoading()
 
-        getTeamsInteractor.setParams(false)
+        getTeamsInteractor.setParams(true, league = League.LA_LIGA)
         execute(getTeamsInteractor, this::onSuccess, this::onError)
     }
 
@@ -25,13 +23,15 @@ class TeamsPresenter
         cancel()
     }
 
-    fun cancel() {
+    private fun cancel() {
         getTeamsInteractor.cancel()
         view.hideLoading()
     }
 
-    fun refresh() {
-        getTeamsInteractor.setParams(true, league = League.LA_LIGA)
+    fun refreshTeamList(league: League) {
+        view.showLoading()
+
+        getTeamsInteractor.setParams(false, league = league)
         execute(getTeamsInteractor, this::onSuccess, this::onError)
     }
 
@@ -39,17 +39,14 @@ class TeamsPresenter
         view.hideLoading()
 
         saveTeams(teams)
-        view.let {
-            it.cancelRefreshDialog()
-            it.refreshList()
-        }
+
+        view.refreshList()
     }
 
     private fun onError() {
-        view.let {
-            it.cancelRefreshDialog()
-            it.showDefaultError()
-        }
+        view.hideLoading()
+
+        view.showDefaultError()
     }
 
     fun getItemsCount(): Int =
@@ -60,7 +57,8 @@ class TeamsPresenter
 
     fun configureCell(teamCellView: TeamCellView, position: Int) {
         val team = getTeam(position)
-        teamCellView.displayImage(team.images.logo)
+        teamCellView.displayImage(url = team.images.badge)
+        teamCellView.displayTeamName(name = team.name)
     }
 
     private fun saveTeams(teamsList: List<Team>) {

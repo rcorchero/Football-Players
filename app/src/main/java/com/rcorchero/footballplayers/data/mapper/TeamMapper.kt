@@ -8,38 +8,38 @@ fun List<TeamEntity>.toDomain(): List<Team> =
 
 fun TeamEntity.toDomain(): Team =
     Team(
-        id = idTeam,
-        name = strTeam,
-        altName = strAlternate,
-        shortName = strTeamShort,
+        id = idTeam ?: "",
+        name = strTeam ?: "",
+        altName = strAlternate ?: "",
+        shortName = strTeamShort ?: "",
 
-        formedYear = intFormedYear,
-        country = strCountry,
+        formedYear = intFormedYear ?: "",
+        country = strCountry ?: "",
 
-        descriptionEN = strDescriptionEN,
-        descriptionES = strDescriptionES,
+        descriptionEN = strDescriptionEN ?: "",
+        descriptionES = strDescriptionES ?: "",
 
-        manager = strManager,
+        manager = strManager ?: "",
 
         stadium = Team.Stadium(
-            name = strStadium,
-            description = strStadiumDescription,
-            capacity = intStadiumCapacity,
-            location = strStadiumLocation,
-            thumb = strStadiumThumb
+            name = strStadium ?: "",
+            description = strStadiumDescription ?: "",
+            capacity = intStadiumCapacity ?: "",
+            location = strStadiumLocation ?: "",
+            thumb = strStadiumThumb ?: ""
         ),
         socialNetworks = Team.SocialNetworks(
-            facebook = strFacebook,
-            instagram = strInstagram,
-            twitter = strTwitter,
-            website = strWebsite,
-            youtube = strYoutube
+            facebook = strFacebook ?: "",
+            instagram = strInstagram ?: "",
+            twitter = strTwitter ?: "",
+            website = strWebsite ?: "",
+            youtube = strYoutube ?: ""
         ),
         images = Team.Images(
-            badge = strTeamBadge,
-            banner = strTeamBanner,
-            fanarts = arrayListOf(strTeamFanart1, strTeamFanart2, strTeamFanart3, strTeamFanart4),
-            jersey = strTeamJersey,
-            logo = strTeamLogo
+            badge = strTeamBadge ?: "",
+            banner = strTeamBanner ?: "",
+            fanarts = listOfNotNull(strTeamFanart1, strTeamFanart2, strTeamFanart3, strTeamFanart4),
+            jersey = strTeamJersey ?: "",
+            logo = strTeamLogo ?: ""
         )
     )
